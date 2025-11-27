@@ -1,57 +1,63 @@
-### EX 1: Find the Minimum Value (Lowest Heartbeat) Using Recursion
+# EX 1 You’re creating a health monitoring device which stores several sensor readings in an array. To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
-AIM:
-```
-To write a Java program to determine the minimum value (e.g., lowest heartbeat) using a recursive method.
-```
+## AIM:
+To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
-Algorithm:
-```
-1.Start the program.
-2.Read the array elements.
-3.Define a recursive function findMin(arr, n):
-4.Base case: If array size is 1, return the element.
-5.Recursive case: Return the smaller value between arr[n-1] and findMin(arr, n-1).
-6.Display the result.
-7.Stop the program.
-```
+## Algorithm
+1. Start
 
-Program:
+2.Read the number of elements (e.g., number of heartbeat readings).
+
+3.Store all readings in an array.
+
+4.Call a recursive function findMin(arr, index)
+
+If index == arr.length - 1, return arr[index]
+
+Else return min(arr[index], findMin(arr, index + 1))
+
+5.Print the minimum value returned by the recursive function.
+
+6.End 
+
+## Program:
 ```
-Program to determine the minimum value (e.g., lowest heartbeat) using recursion.
-Developed by: levaku lakshmi mounika
+/*
+Program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
+Developed by: LEVAKU LAKSHMI MOUNIKA
 RegisterNumber: 212223100026
-Date: 10.11.2025
-```
-
-```
+*/
 import java.util.*;
 
-public class MinValueRecursion {
-    static int findMin(int[] arr, int n) {
-        if (n == 1)
-            return arr[0];
-        return Math.min(arr[n - 1], findMin(arr, n - 1));
+public class Main {
+    static int getMin(int[] arr, int i, int n) {
+        if (i == n - 1) {
+            return arr[i];
+        }
+
+    
+        int minRest = getMin(arr, i + 1, n);
+       
+        return Math.min(arr[i], minRest);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of readings: ");
         int n = sc.nextInt();
         int[] arr = new int[n];
-        System.out.println("Enter the readings:");
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
-
-        int minValue = findMin(arr, n);
-        System.out.println("Lowest heartbeat (Minimum Value): " + minValue);
+        }
+        System.out.println(getMin(arr, 0, n));
     }
 }
+
 ```
-Output:
-<img width="1915" height="774" alt="image" src="https://github.com/user-attachments/assets/d534802a-1301-45f6-b283-b5d84d8fc5b1" />
+
+## Output:
+<img width="649" height="254" alt="image" src="https://github.com/user-attachments/assets/6f3bd15f-b306-4db4-a188-983042447943" />
 
 
-Result:
 
-Thus, the Java program to determine the minimum value (e.g., lowest heartbeat) using recursion is implemented successfully.
+## Result:
+Thus the JAVA program to find the minimum value (e.g., lowest heartbeat), implement a recursive method has implemented successfully
